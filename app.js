@@ -56,18 +56,22 @@ app.post('/gal', (req, res) => {
 
 function f(message) {
     const matches = message.match(/(\!\d+)|(\#\d+)/g)
-    const result = []
+    const results = []
     if (matches == null) {
         return null
     }
     for (let match of matches) {
         if (match.startsWith('!')) {
-            result.push('<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '>')
+            results.push('<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '>')
         } else {
-            result.push('<' + gitLabUrl + '/issues/' + match.slice(1) + '>')
+            results.push('<' + gitLabUrl + '/issues/' + match.slice(1) + '>')
         }
     }
-    return result
+    let res = ""
+    for (result of results) {
+        res += result
+    }
+    return res
 }
 
 app.listen(port || 3000)
