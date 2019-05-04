@@ -17,12 +17,12 @@ app.use(bodyParser.json())
 
 app.post('/gal', (req, res) => {
     if (req.body.token != token) {
-        console.warn("Invalid request!!!!")
+        console.warn('Invalid request!!!!')
         return
     }
     
     if (req.body.challenge) {
-        res.status(200).send("" + req.body.challenge)
+        res.status(200).send('' + req.body.challenge)
         return
     }
 
@@ -30,16 +30,20 @@ app.post('/gal', (req, res) => {
     const channel = req.body.event.channel
     const responseMessage = f(message)
 
+    if (responseMessage == null) {
+        res.send('ok')
+    }
+
     request.post({
-        uri: "https://slack.com/api/chat.postMessage",
+        uri: 'https://slack.com/api/chat.postMessage',
         headers: {
             'content-type': 'application/json',
             'authorization': 'Bearer ' + botToken
         },
-        method: "POST",
+        method: 'POST',
         json: true,
         body: {
-            text: "<" + responseMessage + ">",
+            text: '<' + responseMessage + '>',
             channel: channel
         }
     }, (error) => {
@@ -52,11 +56,14 @@ app.post('/gal', (req, res) => {
 function f(message) {
     const matches = message.match(/(\!\d+)|(\#\d+)/g)
     const result = []
+    if (matches == null) {
+        return null
+    }
     for (let match of matches) {
         if (match.startsWith('!')) {
-            result.push(gitLabUrl + "/merge_requests/" + match.slice(1))
+            result.push('<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '>')
         } else {
-            result.push(gitlaburl + "/issues/" + match.slice(1))
+            result.push('<' + gitlaburl + '/issues/' + match.slice(1) + '>')
         }
     }
     return result
