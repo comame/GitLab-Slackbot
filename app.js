@@ -60,16 +60,12 @@ function f(message) {
     }
     for (let match of matches) {
         if (match.startsWith('!')) {
-            results.push('<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '>')
+            results += '<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '> '
         } else {
-            results.push('<' + gitLabUrl + '/issues/' + match.slice(1) + '>')
+            results += '<' + gitLabUrl + '/issues/' + match.slice(1) + '>'
         }
     }
-    let res = ""
-    for (let result of results) {
-        res += result
-    }
-    return res
+    return results
 }
 
 app.listen(port || 3000)
