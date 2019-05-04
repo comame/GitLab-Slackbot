@@ -1,4 +1,4 @@
 node_modules/
-env.json
+.env
 package-lock.json
 .gcloudignore

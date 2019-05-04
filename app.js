@@ -1,10 +1,8 @@
-const env = require('./env.json')
-
 const [ token, botToken, gitLabUrl, port ] = [
-    env.token,
-    env.botToken,
-    env.gitLabUrl,
-    env.port
+    process.env["GAL_TOKEN"],
+    process.env["GAL_BOT_TOKEN"],
+    process.env["GAL_GITLAB_URL"],
+    process.env.PORT
 ]
 
 const express = require('express')
