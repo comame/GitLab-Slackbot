@@ -54,7 +54,7 @@ app.post('/gal', (req, res) => {
 
 function f(message) {
     const matches = message.match(/(\!\d+)|(\#\d+)/g)
-    const results = ''
+    let results = ''
     if (matches == null) {
         return null
     }
