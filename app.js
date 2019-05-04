@@ -63,7 +63,7 @@ function f(message) {
         if (match.startsWith('!')) {
             result.push('<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '>')
         } else {
-            result.push('<' + gitlaburl + '/issues/' + match.slice(1) + '>')
+            result.push('<' + gitLabUrl + '/issues/' + match.slice(1) + '>')
         }
     }
     return result
