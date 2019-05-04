@@ -32,6 +32,7 @@ app.post('/gal', (req, res) => {
 
     if (responseMessage == null) {
         res.send('ok')
+        return
     }
 
     request.post({
@@ -43,7 +44,7 @@ app.post('/gal', (req, res) => {
         method: 'POST',
         json: true,
         body: {
-            text: '<' + responseMessage + '>',
+            text: responseMessage,
             channel: channel
         }
     }, (error) => {
