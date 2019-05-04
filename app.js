@@ -68,7 +68,7 @@ function f(message) {
         }
     }
     let res = ""
-    for (result of results) {
+    for (let result of results) {
         res += result
     }
     return res
