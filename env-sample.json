@@ -1,0 +1,6 @@
+{
+    "token": "Slack からのメッセージかどうかを判別",
+    "botToken": "Slack に投稿するようの OAuth アクセストークン",
+    "gitLabUrl": "https://gitlab.com/<user>/<project>",
+    "port": 0
+}
