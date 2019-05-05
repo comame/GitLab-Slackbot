@@ -23,7 +23,12 @@ app.post('/gal', (req, res) => {
         res.status(200).send('' + req.body.challenge)
         return
     }
-
+    
+    if (req.body.event["bot_id"]) {
+        res.send('ok')
+        return
+    }
+    
     const message = req.body.event.text
     const channel = req.body.event.channel
     const responseMessage = f(message)
@@ -60,9 +65,9 @@ function f(message) {
     }
     for (let match of matches) {
         if (match.startsWith('!')) {
-            results += '<' + gitLabUrl + '/merge_requests/' + match.slice(1) + '> '
+            results += match + ': <' + gitLabUrl + '/merge_requests/' + match.slice(1) + '>\n'
         } else {
-            results += '<' + gitLabUrl + '/issues/' + match.slice(1) + '>'
+            results += match + ': <' + gitLabUrl + '/issues/' + match.slice(1) + '>\n'
         }
     }
     return results
