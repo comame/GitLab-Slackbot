@@ -1,8 +1,7 @@
-const [ token, botToken, gitLabUrl, port ] = [
+const [ token, botToken, gitLabUrl ] = [
     process.env["GAL_TOKEN"],
     process.env["GAL_BOT_TOKEN"],
     process.env["GAL_GITLAB_URL"],
-    process.env.PORT
 ]
 
 const express = require('express')
@@ -73,4 +72,6 @@ function f(message) {
     return results
 }
 
-app.listen(port || 3000)
+app.listen(80, () => {
+    console.log('START');
+})
