@@ -13,7 +13,7 @@ const app = new express()
 
 app.use(bodyParser.json())
 
-app.post('/gal', (req, res) => {
+app.post('/', (req, res) => {
     if (req.body.token != token) {
         console.warn('Invalid request!!!!')
         return
