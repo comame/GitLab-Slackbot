@@ -7,3 +7,6 @@ COPY .env         /home/node/app/
 WORKDIR /home/node/app
 RUN npm i
 CMD node app.js 
+
+EXPOSE 80
+
